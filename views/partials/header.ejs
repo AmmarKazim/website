@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="styles/header.css" />
+<script src="scripts/header.js"></script>
+<noscript>
+    <style>
+        @media screen and (max-width: 576px) {
+            /* expand menu by default as animations can't be triggered from javascript */
+            header {
+                height: var(--expandMenuHeight);
+            }
+        }
+    </style>
+</noscript>
+
+<header id="header"
+<% // I extract this className in header.js to highlight navItem for current page %>
+class= <%= locals.page ? page : ""  %>
+>
+  <div class="container header">
+    <section class="buttons">
+      <a class="btn logo" href="http://localhost:3000/">
+        <img src="assets/images/home.png" alt="home" data-href="http://localhost:3000/" />
+      </a>
+         <!-- [href="javascript:void(0);"] OR [href="javacript://"] tells that this anchor tag runs a javascript code instead of navigating to somewhere -->
+      <a class="btn hamburger" href="javascript:void(0);" onclick="toggleMenu();">
+        <i class="bi bi-list"></i>
+      </a>
+    </section>
+    <nav>
+        <!-- apply .active style to current page menu item in navigation -->
+      <a href="http://localhost:3000/" id="home"
+      class=<%= locals.page == "home" ? "active" : "" %>
+      >Home</a>
+      <a href="http://localhost:3000/skills" id="skills"
+      class=<%= locals.page == "skills" ? "active" : "" %>
+      >Skills</a>
+      <a href="http://localhost:3000/projects" id="projects"
+      class=<%= locals.page == "projects" ? "active" : "" %>
+      >Projects</a>
+      <a style="display: none" href="localhost:3000/blogs" id="blogs"
+      class=<%= locals.page == "blogs" ? "active" : "" %>
+      >Blogs</a>
+      <a style="display: none" href="localhost:3000/about" id="about"
+      class=<%= locals.page == "about" ? "active" : "" %>
+      >About</a>
+      <a href="http://localhost:3000/contact" id="contact"
+      class=<%= locals.page == "contact" ? "active" : "" %>
+      >Contact</a>
+    </nav>
+  </div>
+</header>

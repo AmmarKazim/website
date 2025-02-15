@@ -1,0 +1,53 @@
+@font-face {
+  font-family: AtkinsonHyperlegibleMono;
+  src: url(../assets/fonts/AtkinsonHyperlegibleMono-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: AtkinsonHyperlegibleMono-Italic;
+  src: url(../assets/fonts/AtkinsonHyperlegibleMono-Italic-VariableFont_wght.ttf);
+}
+
+:root {
+  height: 100vh;
+  color-scheme: dark light;
+  /* for dark color scheme */
+  --dark-background: #211729;
+  --dark-secondary: #f62dae;
+  --dark-primary: #faa381;
+  --dark-foreground: #d1d1d1;
+  /* for light color scheme */
+  --light-background: #f5fbef;
+  --light-secondary: #50a2a7;
+  --light-primary: #192a51;
+  --light-foreground: #414141;
+}
+
+html {
+  /* helful in smoothing out the fade-in & fade-out of pages */
+  background-color: light-dark(#ffffff, #000000);
+}
+
+body {
+  font-family: AtkinsonHyperlegibleMono;
+  color: light-dark(var(--light-foreground), var(--dark-foreground));
+  background-color: light-dark(var(--light-background), var(--dark-background));
+  margin: 0;
+  /* to put <footer> at bottom of page */
+  height: 100%;
+  flex-direction: column;
+  /* display: flex; is faded-in by jQuery*/
+  display: none;
+}
+
+footer {
+  margin-top: auto;
+  color: light-dark(var(--dark-foreground), var(--light-foreground));
+  background-color: light-dark(var(--light-primary), var(--dark-primary));
+}
+
+/* imitating bootstrap .container */
+.container {
+  width: 90%;
+  margin-inline: auto;
+}

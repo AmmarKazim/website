@@ -1,0 +1,129 @@
+:root {
+  --shrinkMenuMeight: 3rem;
+  --expandMenuHeight: 9rem;
+  --buttonLength: 2rem;
+  --linkHeight: 1.25rem;
+}
+
+header {
+  height: var(--shrinkMenuMeight);
+  background-color: light-dark(var(--light-primary), var(--dark-primary));
+}
+
+header .header {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .header .buttons .btn {
+  display: block;
+  height: var(--buttonLength);
+  width: var(--buttonLength);
+}
+
+header .header .buttons .btn.logo img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+header .header .buttons .btn.hamburger {
+  display: none;
+}
+
+header .header nav a {
+  text-decoration: none;
+  padding: 2px 4px;
+  color: light-dark(var(--dark-foreground), var(--light-foreground));
+}
+
+header .header nav a:hover {
+  color: light-dark(var(--light-foreground), var(--dark-foreground));
+  background-color: light-dark(var(--light-background), var(--dark-background));
+}
+
+header .header nav a.active {
+  color: light-dark(var(--light-foreground), var(--dark-foreground));
+  background-color: light-dark(var(--light-background), var(--dark-background));
+}
+
+/* -------------------------------------  for mobile ------------------------------------- */
+/* ---------------------------------------------------------------------------------------- */
+
+@media only screen and (max-width: 576px) {
+  header {
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+
+  header.expand {
+    animation-name: expand;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  header.shrink {
+    animation-name: shrink;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  header .header {
+    height: var(--expandMenuHeight);
+    flex-direction: column;
+    justify-content: start;
+    align-items: stretch;
+  }
+
+  header .header .buttons {
+    height: var(--shrinkMenuMeight);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header .header .buttons .btn.hamburger {
+    /* just to center <i> in .hamburger */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header .header .buttons .btn.hamburger i {
+    font-size: var(--buttonLength);
+    color: light-dark(var(--light-background), var(--dark-background));
+  }
+
+  header .header nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: stretch;
+  }
+
+  header .header nav a {
+    height: var(--linkHeight);
+    padding: 0;
+  }
+}
+
+@keyframes expand {
+  from {
+    height: var(--shrinkMenuMeight);
+  }
+  to {
+    height: var(--expandMenuHeight);
+  }
+}
+
+@keyframes shrink {
+  from {
+    height: var(--expandMenuHeight);
+  }
+  to {
+    height: var(--shrinkMenuMeight);
+  }
+}
